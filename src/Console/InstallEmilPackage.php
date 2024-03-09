@@ -3,7 +3,6 @@
 namespace Happytodev\Emil\Console;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\File;
 
 class InstallEmilPackage extends Command
 {
@@ -24,12 +23,11 @@ class InstallEmilPackage extends Command
         $this->info('>>> Base layouts published ✅');
     }
 
-
     private function installFolders($forcePublish = false)
     {
         $params = [
             '--provider' => "Happytodev\Emil\EmilServiceProvider",
-            '--tag' => "emil-install-folders"
+            '--tag' => 'emil-install-folders',
         ];
 
         if ($forcePublish === true) {
@@ -43,7 +41,7 @@ class InstallEmilPackage extends Command
     {
         $params = [
             '--provider' => "Happytodev\Emil\EmilServiceProvider",
-            '--tag' => "emil-publish-layouts"
+            '--tag' => 'emil-publish-layouts',
         ];
 
         if ($forcePublish === true) {

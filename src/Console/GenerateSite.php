@@ -3,15 +3,15 @@
 namespace Happytodev\Emil\Console;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Blade;
-use League\CommonMark\MarkdownConverter;
+use Illuminate\Support\Facades\File;
 use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\Environment\Environment;
-use Spatie\ImageOptimizer\OptimizerChainFactory;
-use League\CommonMark\Extension\FrontMatter\FrontMatterExtension;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
+use League\CommonMark\Extension\FrontMatter\FrontMatterExtension;
 use League\CommonMark\Extension\FrontMatter\Output\RenderedContentWithFrontMatter;
+use League\CommonMark\MarkdownConverter;
+use Spatie\ImageOptimizer\OptimizerChainFactory;
 
 // require __DIR__ . '/../vendor/autoload.php';
 
@@ -56,7 +56,7 @@ class GenerateSite extends Command
 
         // $this->converter = new CommonMarkConverter();
 
-        $this->contentDir =  base_path('content');
+        $this->contentDir = base_path('content');
 
         $this->htmlDir = base_path('_html/');
 
@@ -67,7 +67,7 @@ class GenerateSite extends Command
         // ->addOptimizer(new \Spatie\ImageOptimizer\Optimizers\Pngquant())
         // ->addOptimizer(new \Spatie\ImageOptimizer\Optimizers\Optipng());
 
-        foreach (glob($this->contentDir . '/*.md') as $file) {
+        foreach (glob($this->contentDir.'/*.md') as $file) {
             // dd($file);
             $content = file_get_contents($file);
             $html = $this->converter->convert($content);
@@ -92,8 +92,7 @@ class GenerateSite extends Command
 
             // Générez le contenu à l'aide de Blade et enregistrez-le :
             // $result = file_put_contents($this->htmlDir . $filename . '.html', Blade::render('home', $data));
-            $result = file_put_contents($this->htmlDir . $filename . '.html', view($frontMatter['layout'] ?? 'home', $data)->render());
-
+            $result = file_put_contents($this->htmlDir.$filename.'.html', view($frontMatter['layout'] ?? 'home', $data)->render());
 
             // dd(
             //     'filename :',
