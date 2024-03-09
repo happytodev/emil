@@ -2,9 +2,9 @@
 
 namespace Happytodev\Emil;
 
+use Happytodev\Emil\Commands\EmilCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Happytodev\Emil\Commands\EmilCommand;
 
 class EmilServiceProvider extends PackageServiceProvider
 {

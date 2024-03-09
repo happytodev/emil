@@ -2,9 +2,9 @@
 
 namespace Happytodev\Emil\Tests;
 
+use Happytodev\Emil\EmilServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Happytodev\Emil\EmilServiceProvider;
 
 class TestCase extends Orchestra
 {
