@@ -2,11 +2,10 @@
 
 namespace Happytodev\Emil;
 
-use Happytodev\Emil\Commands\EmilCommand;
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Happytodev\Emil\Console\GenerateSite;
 use Happytodev\Emil\Console\InstallEmilPackage;
+use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class EmilServiceProvider extends PackageServiceProvider
 {
@@ -16,16 +15,16 @@ class EmilServiceProvider extends PackageServiceProvider
             // Install typhoon command
             $this->commands([
                 InstallEmilPackage::class,
-                GenerateSite::class
+                GenerateSite::class,
             ]);
 
             $this->publishes([
-                __DIR__ . '/../_html' => base_path('_html'),
-                __DIR__ . '/../content' => base_path('content'),
+                __DIR__.'/../_html' => base_path('_html'),
+                __DIR__.'/../content' => base_path('content'),
             ], 'emil-install-folders');
 
             $this->publishes([
-                __DIR__ . '/../resources/views' => base_path('resources/views'),
+                __DIR__.'/../resources/views' => base_path('resources/views'),
             ], 'emil-publish-layouts');
         }
     }
