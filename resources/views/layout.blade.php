@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
+    <link href="./css/main.css" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Mon site statique</h1>
+        <h1 class="text-3xl">Emil Static Website Alpha</h1>
     </header>
 
     @yield('content')
 
     <footer>
-        &copy; 2023
+        &copy; 2024 Happytodev
     </footer>
 </body>
 </html>

@@ -21,6 +21,11 @@ class InstallEmilPackage extends Command
         $this->info('>>> Publish layouts...');
         $this->publishLayouts(true);
         $this->info('>>> Base layouts published ✅');
+
+        $this->info('>>> Publish tailwind configutation...');
+        $this->publishTailwindComponents(true);
+        $this->info('>>> Tailwind configuration files published ✅');
+
     }
 
     private function installFolders($forcePublish = false)
@@ -42,6 +47,20 @@ class InstallEmilPackage extends Command
         $params = [
             '--provider' => "Happytodev\Emil\EmilServiceProvider",
             '--tag' => 'emil-publish-layouts',
+        ];
+
+        if ($forcePublish === true) {
+            $params['--force'] = true;
+        }
+
+        $this->call('vendor:publish', $params);
+    }
+
+    private function publishTailwindComponents($forcePublish = false)
+    {
+        $params = [
+            '--provider' => "Happytodev\Emil\EmilServiceProvider",
+            '--tag' => 'emil-publish-tailwind-components',
         ];
 
         if ($forcePublish === true) {

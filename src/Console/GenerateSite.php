@@ -3,15 +3,16 @@
 namespace Happytodev\Emil\Console;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Artisan;
+use League\CommonMark\MarkdownConverter;
 use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\Environment\Environment;
-use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
-use League\CommonMark\Extension\FrontMatter\FrontMatterExtension;
-use League\CommonMark\Extension\FrontMatter\Output\RenderedContentWithFrontMatter;
-use League\CommonMark\MarkdownConverter;
 use Spatie\ImageOptimizer\OptimizerChainFactory;
+use League\CommonMark\Extension\FrontMatter\FrontMatterExtension;
+use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
+use League\CommonMark\Extension\FrontMatter\Output\RenderedContentWithFrontMatter;
 
 // require __DIR__ . '/../vendor/autoload.php';
 
@@ -33,14 +34,15 @@ class GenerateSite extends Command
     {
         $this->info('Emil try to generate your static website...');
 
-        $this->info('>>> Start...');
+
         $this->generate();
-        $this->info('>>> Static website has been successfully generated ✅');
     }
 
     // Parcourir le dossier content et générer les fichiers HTML
     public function generate()
     {
+
+        
         // Define your configuration, if needed
         $config = [];
 
@@ -90,9 +92,14 @@ class GenerateSite extends Command
                 'frontMatter' => $frontMatter ?? '',
             ];
 
+             // Clear the compiled views
+             Artisan::call('view:clear');
+
             // Générez le contenu à l'aide de Blade et enregistrez-le :
             // $result = file_put_contents($this->htmlDir . $filename . '.html', Blade::render('home', $data));
             $result = file_put_contents($this->htmlDir.$filename.'.html', view($frontMatter['layout'] ?? 'home', $data)->render());
+            //dd($result);
+            $this->info('>>> Static website has been successfully generated ✅');
 
             // dd(
             //     'filename :',
