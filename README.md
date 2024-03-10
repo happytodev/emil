@@ -5,17 +5,22 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/happytodev/emil/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/happytodev/emil/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/happytodev/emil.svg?style=flat-square)](https://packagist.org/packages/happytodev/emil)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+Emil is a static site generator made with Laravel. Use simply markdown files, Blade templating, TailwindCss to build your website.
 
 ## Support us
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/emil.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/emil)
+You can support Emil by [sponsoring it](https://github.com/sponsors/happytodev).
 
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
 
 ## Installation
+
+### Prerequisites
+
+Emil needs a fresh Laravel installation : 
+
+```bash
+laravel new youramazingwebsite
+```
 
 You can install the package via composer:
 
@@ -23,44 +28,56 @@ You can install the package via composer:
 composer require happytodev/emil
 ```
 
-You can publish and run the migrations with:
+Launch the install : 
+
 
 ```bash
-php artisan vendor:publish --tag="emil-migrations"
-php artisan migrate
+php artisan emil:install
 ```
-
-You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="emil-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="emil-views"
+npm install && npm run dev
 ```
 
 ## Usage
 
-```php
-$emil = new Happytodev\Emil();
-echo $emil->echoPhrase('Hello, Happytodev!');
+You can build you content in the `content` folder.
+
+You can modify the appearence of your website by modifying `resources/views` folder.
+
+## Generate static content
+
+Use this command : 
+
+```bash
+php artisan emil:generate
 ```
+
+## Emil development server
+
+You can see your modification in live by using the integrate Emil server.
+
+```bash
+php artisan emil:serve
+```
+
+In the background, Emil launch Browser-Sync and watches all files in `content` and `resources/views` folders.
+
+On every detected change, it generates in `_html` folder : 
+- css/main.css file
+- all html files
+
+and of course, refresh the view in the browser.
+
+
+## Deployment
+
+When your are satisfied, just push the content of `_html` folder on your server and voilà !
+
 
 ## Testing
 
-```bash
-composer test
-```
+To be documented
 
 ## Changelog
 
