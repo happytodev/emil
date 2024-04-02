@@ -27,7 +27,7 @@ class WatchChange extends Command
 
     private function watchContentChanges()
     {     
-        Watch::paths('resources/views', 'content')
+        Watch::paths('resources/views', 'content', 'themes')
         ->onAnyChange(function (string $type, string $path) {
             //if ($type === Watch::EVENT_TYPE_FILE_CREATED) {
                 //$this->line("file {$path} was created");
