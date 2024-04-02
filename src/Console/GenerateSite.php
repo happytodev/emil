@@ -34,15 +34,12 @@ class GenerateSite extends Command
     {
         $this->info('Emil try to generate your static website...');
 
-
         $this->generate();
     }
 
     // Parcourir le dossier content et générer les fichiers HTML
     public function generate()
     {
-
-        
         // Define your configuration, if needed
         $config = [];
 
@@ -62,14 +59,12 @@ class GenerateSite extends Command
 
         $this->htmlDir = base_path('_html/');
 
-        //dd('enter generate function', $this->contentDir);
-
         // $this->optimizerChain = OptimizerChainFactory::create()
         // ->addOptimizer(new \Spatie\ImageOptimizer\Optimizers\Jpegoptim())
         // ->addOptimizer(new \Spatie\ImageOptimizer\Optimizers\Pngquant())
         // ->addOptimizer(new \Spatie\ImageOptimizer\Optimizers\Optipng());
 
-        foreach (glob($this->contentDir.'/*.md') as $file) {
+        foreach (glob($this->contentDir . '/*.md') as $file) {
             // dd($file);
             $content = file_get_contents($file);
             $html = $this->converter->convert($content);
@@ -95,33 +90,18 @@ class GenerateSite extends Command
              // Clear the compiled views
              Artisan::call('view:clear');
 
-            // Générez le contenu à l'aide de Blade et enregistrez-le :
-            // $result = file_put_contents($this->htmlDir . $filename . '.html', Blade::render('home', $data));
-            $result = file_put_contents($this->htmlDir.$filename.'.html', view($frontMatter['layout'] ?? 'home', $data)->render());
-            //dd($result);
+
+            $result = file_put_contents($this->htmlDir . $filename . '.html', Blade::render($frontMatter['layout'] ?? 'home', $data));
+
             $this->info('>>> Static website has been successfully generated ✅');
 
-            // dd(
-            //     'filename :',
-            //     $this->htmlDir . $filename . '.html',
-            //     'data : ',
-            //     $data,
-            //     'result : ',
-            //     $result,
-            //     'frontmatter : ',
-            //     $frontMatter,
-            //     'blade : ',
-            //     view('home', $data)->render()
-            // );
-
-            // Optimiser les images
-
+            // Optimize pictures
             // foreach (glob($this->htmlDir . $path . '/*.{jpg,jpeg,png,gif}') as $image) {
             //     $this->optimizerChain->optimize($image);
             // }
         }
 
-        // Génération des pages spécifiques
+        // Generate specific pages
 
         // Blog
         // $articles = glob($contentDir . '/blog/*.md');
@@ -131,13 +111,13 @@ class GenerateSite extends Command
         // $tags = glob($contentDir . '/tags/*.md');
         // file_put_contents($publicDir . '/tags/index.html', generateTagsIndex($tags));
 
-        // // Catégories
+        // // Categories
         // $categories = glob($contentDir . '/categories/*.md');
         // file_put_contents($publicDir . '/categories/index.html', generateCategoriesIndex($categories));
 
-        // // Auteurs
-        // $authors = glob($contentDir . '/auteurs/*.md');
-        // file_put_contents($publicDir . '/auteurs/index.html', generateAuthorsIndex($authors));
+        // // Authors
+        // $authors = glob($contentDir . '/authors/*.md');
+        // file_put_contents($publicDir . '/authors/index.html', generateAuthorsIndex($authors));
 
         // // Séries
         // $series = glob($contentDir . '/series/*');
