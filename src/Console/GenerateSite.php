@@ -77,6 +77,7 @@ class GenerateSite extends Command
             $html = str_replace('[URL]', 'https://', $html);
 
             $filename = basename($file, '.md');
+            $originalFilename = basename($file);
             //$path = str_replace($this->contentDir, '', $file);
 
             // $result = file_put_contents($this->htmlDir . $filename . '.html', $html);
@@ -93,7 +94,7 @@ class GenerateSite extends Command
 
             $result = file_put_contents($this->htmlDir . $filename . '.html', Blade::render($frontMatter['layout'] ?? 'home', $data));
 
-            $this->info('>>> Static website has been successfully generated ✅');
+            $this->info(">>> Static page for $originalFilename has been successfully generated ✅");
 
             // Optimize pictures
             // foreach (glob($this->htmlDir . $path . '/*.{jpg,jpeg,png,gif}') as $image) {
