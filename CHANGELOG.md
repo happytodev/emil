@@ -3,6 +3,13 @@
 All notable changes to `emil` will be documented in this file.
 
 ---
+## Alpha release v0.2.4 - 2024-08-22
+
+- Update illuminate/Contracts
+
+---
+
+---
 ## Alpha release v0.2.3 - 2024-08-22
 
 - Update dependencies
