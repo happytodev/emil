@@ -1,12 +1,12 @@
 {
-    "name": "happytodev/emil",
+    "name": "emilstatic/emil",
     "description": "Emil is a static site generator based on Laravel.",
     "keywords": [
         "happytodev",
         "laravel",
         "emil"
     ],
-    "homepage": "https://github.com/happytodev/emil",
+    "homepage": "https://github.com/emilstatic/emil",
     "license": "MIT",
     "authors": [
         {
@@ -38,13 +38,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Happytodev\\Emil\\": "src/",
-            "Happytodev\\Emil\\Database\\Factories\\": "database/factories/"
+            "EmilStatic\\Emil\\": "src/",
+            "EmilStatic\\Emil\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Happytodev\\Emil\\Tests\\": "tests/",
+            "EmilStatic\\Emil\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -76,10 +76,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Happytodev\\Emil\\EmilServiceProvider"
+                "EmilStatic\\Emil\\EmilServiceProvider"
             ],
             "aliases": {
-                "Emil": "Happytodev\\Emil\\Facades\\Emil"
+                "Emil": "EmilStatic\\Emil\\Facades\\Emil"
             }
         }
     },
