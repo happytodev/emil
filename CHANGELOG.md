@@ -3,6 +3,11 @@
 All notable changes to `emil` will be documented in this file.
 
 ---
+## Alpha release v0.2.1 - 2024-08-21
+
+- Update vendor name
+
+---
 ## Alpha release v0.2.0 - 2024-04-02
 
 - Improve console message by identifying md files name before conversion to static files
