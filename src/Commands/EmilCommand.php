@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Happytodev\Emil\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class EmilCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'emil';
 
     public $description = 'My command';
 
